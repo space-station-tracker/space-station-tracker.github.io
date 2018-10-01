@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <!-- other css -->
+
+
+    <!-- leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+            integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+            crossorigin="">
+    </script>
+
+    <script src="js/functions.js"></script>
+
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js' charset='utf-8'></script>
+
+
+    <!-- mapbox -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <title>ISS Location</title>
+    <link rel='icon' href='images/iss-icon-black.png' type='image/x-icon'/ >
+  </head>
+
+  <body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+     <a class="navbar-brand" data-value="home" href="#">ISS Location</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-4">
+       <li class="nav-item">
+         <a class="nav-link " data-value="map"href="#">Map</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link " data-value="statistics" href="#">Statistics</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" data-value="astronauts" href="#">Astronauts</a>
+       </li>
+      </ul>
+      </div>
+    </nav>
+
+
+    <div class="spacer" id="textspacer">
+      <h1 class="text-center">.</h1>
+      <!-- <h1 class="text-center">-</h1> -->
+    </div>
+
+    <!-- <div class="mapcontainer"> -->
+    <!-- <div class="container"> -->
+    <div class="mapclass" id="map"></div>
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <div class="links" id="links">
+      <div class="container" id="info">
+        <div class="row">
+          <!-- <h1 class="text-center">Links</h1> -->
+          <div class="col-sm-12 col-md-6 col-lg-6" id="statistics">
+          <!-- <button id="issLocationButton">Get ISS Location</button> -->
+          <h5>Statistics </h5>
+          <ul class="statistics-list">
+            <li id="issLocationLong">Longitude: </li>
+            <li id="issLocationLat">Latitude: </li>
+            <li id="issHeading">Heading: </li>
+            <li id="issLocationTimestamp">Timestamp: </li>
+          </ul>
+          <button class="button -flower center" id="issLocationButton">Re-centre</button>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6" id="astronauts">
+          <h5 id="crewCount">Astronauts</h5>
+          <ul class="astronaut-list">
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="spacer">
+    </div>
+
+    <footer class="footer" id="footer">
+      <div class="container">
+           <div class="row">
+             <div class="col-sm-12 col-md-6 col-lg-6 footer-section">
+               <address class="footercopyright">
+                 © Copyright <script> document.write(new Date().getFullYear().toString()); </script>
+               </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Optional JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src='js/main.js'></script>
+
+  </body>
+</html>
