@@ -29,7 +29,7 @@ $(document).ready( function() {
     mapboxgl.accessToken = 'pk.eyJ1IjoibHgtcHJvdG8iLCJhIjoiY2ptbjNyc2c1MG5wZzN2bng2bjFiNjY1eiJ9.ELlreuSL0JDbTCmrBa22cg';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/lx-proto/cjmn4el8pc0822sltahm3henp',
+        style: 'mapbox://styles/mapbox/satellite-v9', //'mapbox://styles/lx-proto/cjmn4el8pc0822sltahm3henp',
         zoom: 1,
         center: [origin[1], origin[0]]
     });
