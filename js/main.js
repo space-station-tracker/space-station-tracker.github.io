@@ -14,9 +14,6 @@ $(document).ready( function() {
 
   // get initial ISS position
   $.getJSON('http://api.open-notify.org/iss-now.json', function(data) {
-
-
-
     var origin = [data['iss_position']['latitude'], data['iss_position']['longitude']];
     var destination = [data['iss_position']['latitude'], data['iss_position']['longitude']];
 
@@ -220,7 +217,7 @@ $(document).ready( function() {
 
           origin = destination;
         }); // end GET ISS location
-      }, 5000);// end set interval
+      }, 60000);// end set interval
     }); // onload map
   }); // initial get request
 
