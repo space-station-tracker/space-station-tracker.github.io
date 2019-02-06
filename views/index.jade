@@ -1,5 +1,44 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+block bodycontent
+  // MAP OBJECT
+  #map.mapclass
+
+  // STATISTICS
+  .container
+    .row
+      // STATISTICS
+      .col-sm-12.col-md-4.col-lg-3
+        // <div class="card-columns">
+        .card.mt-2.mb-3
+          h5.card-header.text-center Statistics
+          .card-body
+            // <h5 class="card-title">Statistics</h5>
+            ul.statistics-list
+              li#issLocationLong Longitude: 
+              li#issLocationLat Latitude: 
+              li#issHeading Heading: 
+              li#issLocationTimestamp Timestamp: 
+            a#issLocationButton.btn.btn-primary(href='#') Focus
+        .card.mt-3.mb-3
+          h5.card-header.text-center Astronauts
+          .card-body
+            ul.astronaut-list
+        //- .card.mt-3.mb-3
+        //-   h5.card-header.text-center About
+        //-   .card-body
+        //-     a(href='https://lx-proto.tk') lx-proto.tk
+      // DAILY ISS IMAGE
+      .col-sm-12.col-md-8.col-lg-9
+        .card.mt-2.mb-3
+          h5.card-header.text-center Image of the Day
+          img.card-img-top(src='/images/space_walk.jpg', alt='Card image cap')
+          .card-body
+            h5.card-title= IOTDtitle
+            p.card-text
+              = IOTDdescription
+            p.card-text
+              small.text-muted= IOTDlastupdate
+              
+block localjavascript
+  script(type='text/javascript', src='/javascripts/main.js')

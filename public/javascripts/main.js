@@ -89,8 +89,6 @@ $(document).ready( function() {
         });
       });
 
-
-
       // var lineArray = [[origin[1], origin[0]],
       // [destination[1], destination[0]]];
 
@@ -144,9 +142,8 @@ $(document).ready( function() {
           $("#issLocationTimestamp").text("Timestamp: " + unixTimeToDateConverter(timestamp));
           $("#issHeading").text("Heading: " + heading + "°");
 
-
-          console.log("origin: " + origin[0] + "  " + origin[1]);
-          console.log("dest: " + destination[0] + "  " + destination[1]);
+          // console.log("origin: " + origin[0] + "  " + origin[1]);
+          console.log(destination[0] + ", " + destination[1]);
           // update destination point
 
           // var newVar = [[destination[1],destination[0]]];
@@ -246,12 +243,6 @@ $(window).resize(function(){
     $('#map').css("height", $(window).height()*0.5);
     // Comma, not colon ----^
     $('.body').height($(window).height());
-
     $('.footer').css("bottom", 0);
-
     $('#spacer').css("height", ($(window).height()-$('#map').height()-$('#info').height()-$('#navbar').height()- $('#footer').height() - $('#textspacer').height()) );
 });
-
-// mapbox
-// lx-proto
-// ae -> VEJXVarU5G9Wc3Q

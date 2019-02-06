@@ -1,32 +1,30 @@
 doctype html
 html(lang='en')
   head
-    // Required meta tags
+    // Meta info
+    title ISS Tracker
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(name='theme-color', content='#FFF')
     // Bootstrap CSS
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
-    
-    // leaflet
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    // Leaflet
     link(rel='stylesheet', href='https://unpkg.com/leaflet@1.3.4/dist/leaflet.css', integrity='sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==', crossorigin='')
     // Make sure you put this AFTER Leaflet's CSS
     script(src='https://unpkg.com/leaflet@1.3.4/dist/leaflet.js', integrity='sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==', crossorigin='')
     script(src='/javascripts/functions.js')
     script(src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js', charset='utf-8')
-    // mapbox
+    // Mapbox
     script(src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js')
     link(href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css', rel='stylesheet')
-    link(rel='stylesheet', type='text/css', href='/stylesheets/main.css')
-    title ISS Tracker
+    // Stylesheets 
+    link(rel='stylesheet', type='text/css', href='/stylesheets/styles.css')
     link(rel='icon', href='/images/iss-icon-black.png', type='image/x-icon')
-    title= title
-    //- link(rel='stylesheet', href='/stylesheets/style.css')
-    
-  body
   
+  body
     // NAVBAR
-    nav#navbar.navbar.navbar-expand-lg.navbar-light.bg-light
+    nav#navbar.navbar.navbar-expand-sm.navbar-light.bg-light
       .container
         a.navbar-brand(href='#')
           img(src='/images/iss-icon-black.png', width='20', height='20', alt='ISS Tracker')
@@ -40,46 +38,19 @@ html(lang='en')
               a.nav-link(href='#') Astronauts
             li.nav-item
               a.nav-link(href='#') Statistics
-              
-    // MAP OBJECT
-    #map.mapclass
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link(href='https://lx-proto.tk') Author
+            li.nav-item
+              a.nav-link(href='https://github.com/alexberndt')
+                i.fa.fa-github
+            li.nav-item
+              a.nav-link(href='https://www.linkedin.com/in/alexander-berndt/')
+                i.fa.fa-linkedin
     
-    // STATISTICS
-    .container
-      .row
-        // STATISTICS
-        .col-sm-12.col-md-4.col-lg-3
-          // <div class="card-columns">
-          .card.mt-2.mb-3
-            h5.card-header.text-center Statistics
-            .card-body
-              // <h5 class="card-title">Statistics</h5>
-              ul.statistics-list
-                li#issLocationLong Longitude: 
-                li#issLocationLat Latitude: 
-                li#issHeading Heading: 
-                li#issLocationTimestamp Timestamp: 
-              a#issLocationButton.btn.btn-primary(href='#') Focus
-          .card.mt-3.mb-3
-            h5.card-header.text-center Astronauts
-            .card-body
-              ul.astronaut-list
-          .card.mt-3.mb-3
-            h5.card-header.text-center About
-            .card-body
-              a(href='https://lx-proto.tk') lx-proto.tk
-        // DAILY ISS IMAGE
-        .col-sm-12.col-md-8.col-lg-9
-          .card.mt-2.mb-3
-            h5.card-header.text-center Image of the Day
-            img.card-img-top(src='/images/space_walk.jpg', alt='Card image cap')
-            .card-body
-              h5.card-title Space Walk
-              p.card-text
-                | Watch Juno zoom past Jupiter again.  NASA's robotic spacecraft Juno is continuing on its 53-day, highly-elongated orbits around our Solar System's largest planet.  The featured video is from perijove 16, the sixteenth time that Juno has passed near Jupiter since it arrived in mid-2016. Each perijove passes near a slightly different part of Jupiter's cloud tops.  This color-enhanced video has been digitally composed from 21 JunoCam still images, resulting in a 125-fold time-lapse. The video begins with Jupiter rising as Juno approaches from the north.
-              p.card-text
-                small.text-muted Last updated 3 mins ago
-      // columns
+    // MAIN BODY CONTENT           
+    block bodycontent
+    
     // FOOTER
     footer.footer
       .container
@@ -87,10 +58,13 @@ html(lang='en')
           | © Copyright 
           script.
             document.write(new Date().getFullYear().toString());
+    
+    // JAVASCRIPT
     // jQuery first, then Popper.js, then Bootstrap JS
     script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
     // Optional JavaScript
     script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js')
-    script(type='text/javascript', src='/javascripts/main.js')
+    // Local javascript files 
+    block localjavascript
