@@ -15,11 +15,15 @@ block bodycontent
           .card-body
             // <h5 class="card-title">Statistics</h5>
             ul.statistics-list
+              li#issLocationLat Latitude:
               li#issLocationLong Longitude: 
-              li#issLocationLat Latitude: 
+              li#issAltitude Altitude:
+              li#issVelocity Velocity: 
               li#issHeading Heading: 
               li#issLocationTimestamp Timestamp: 
             a#issLocationButton.btn.btn-primary(href='#') Focus
+          .card-footer.text-center
+            small.text-muted Updated every 60 seconds
         .card.mt-3.mb-3
           h5.card-header.text-center Astronauts
           .card-body

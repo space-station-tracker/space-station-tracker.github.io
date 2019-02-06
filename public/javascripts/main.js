@@ -13,14 +13,28 @@ $(document).ready( function() {
 
 
   // get initial ISS position
-  $.getJSON('http://api.open-notify.org/iss-now.json', function(data) {
-    var origin = [data['iss_position']['latitude'], data['iss_position']['longitude']];
-    var destination = [data['iss_position']['latitude'], data['iss_position']['longitude']];
+  // https://api.wheretheiss.at/v1/satellites/25544 <-- ISS is satellite 25544
+  // http://api.open-notify.org/iss-now.json
+  $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function(data) {
 
-    $("#issLocationLong").text("Longitude: " + destination[1]);
-    $("#issLocationLat").text("Latitude: " + destination[0]);
-    $("#issLocationTimestamp").text("Timestamp: " + unixTimeToDateConverter(data['timestamp']));
-    $("#issHeading").text("Heading: -.- °");
+    // USING http://api.open-notify.org/iss-now.json
+    // var origin = [data['iss_position']['latitude'], data['iss_position']['longitude']];
+    // var destination = [data['iss_position']['latitude'], data['iss_position']['longitude']];
+
+    // USING https://api.wheretheiss.at/v1/satellites/25544
+    var origin = [Math.round(data['latitude']*100)/100, Math.round(data['longitude']*100)/100];
+    var destination = [Math.round(data['latitude']*100)/100, Math.round(data['longitude']*100)/100];
+    // var altitude = Math.round(data['altitude']*100)/100;
+    // var velocity = Math.round(data['velocity']*100)/100;
+
+    // $("#issLocationLong").text("Longitude:   " + destination[1] + "° E");
+    // $("#issLocationLat").text ("Latitude:    " + destination[0] + "° N");
+    // $("#issAltitude").text    ("Altitude:    " + altitude + " km");
+    // $("#issVelocity").text    ("Velocity:    " + velocity + " km/h");
+    // $("#issLocationTimestamp").text("Timestamp: " + unixTimeToDateConverter(data['timestamp']));
+    // $("#issHeading").text("Heading: -.- °");
+
+    updateStatistics(data,"");
 
     // fetch map data from Mapbox and create Map instance
     mapboxgl.accessToken = 'pk.eyJ1IjoibHgtcHJvdG8iLCJhIjoiY2ptbjNyc2c1MG5wZzN2bng2bjFiNjY1eiJ9.ELlreuSL0JDbTCmrBa22cg';
@@ -33,8 +47,8 @@ $(document).ready( function() {
 
     map.on('load', function () {
 
-      console.log(destination[1]);
-      console.log(destination[0]);
+      // console.log(destination[1]);
+      // console.log(destination[0]);
 
       map.addLayer({
           "id": "route",
@@ -121,15 +135,21 @@ $(document).ready( function() {
       });
       map.flyTo({center: [destination[1],destination[0]], zoom: 3});
 
-      // Show ISS every 30 seconds
+      // Show ISS every 60 seconds
       setInterval( function() {
 
         // get newest location
-        $.getJSON('http://api.open-notify.org/iss-now.json', function(data) {
-          let lat = data['iss_position']['latitude'];
-          let long = data['iss_position']['longitude'];
-          let timestamp = data['timestamp'];
 
+        $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function(data) {
+          // USING http://api.open-notify.org/iss-now.json
+          // let lat = data['iss_position']['latitude'];
+          // let long = data['iss_position']['longitude'];
+          // let timestamp = data['timestamp'];
+
+          let lat = Math.round(data['latitude']*100)/100;
+          let long = Math.round(data['longitude']*100)/100;
+          let altitude = Math.round(data['altitude']*100)/100;
+          let velocity = Math.round(data['velocity']*100)/100;
 
           destination = [lat, long];
 
@@ -137,11 +157,14 @@ $(document).ready( function() {
           // console.log(heading);
 
           // update on-screen values
-          $("#issLocationLong").text("Longitude: " + long);
-          $("#issLocationLat").text("Latitude: " + lat);
-          $("#issLocationTimestamp").text("Timestamp: " + unixTimeToDateConverter(timestamp));
-          $("#issHeading").text("Heading: " + heading + "°");
+          // $("#issLocationLong").text("Longitude:   " + destination[1] + "° E");
+          // $("#issLocationLat").text ("Latitude:    " + destination[0] + "° N");
+          // $("#issAltitude").text    ("Altitude:    " + altitude + " km");
+          // $("#issVelocity").text    ("Velocity:    " + velocity + " km/h");
+          // $("#issLocationTimestamp").text("Timestamp: " + unixTimeToDateConverter(data['timestamp']));
+          // $("#issHeading").text     ("Heading:     " + heading + "°");
 
+          updateStatistics(data,heading);
           // console.log("origin: " + origin[0] + "  " + origin[1]);
           console.log(destination[0] + ", " + destination[1]);
           // update destination point

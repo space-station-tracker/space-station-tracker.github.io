@@ -10,3 +10,20 @@ let unixTimeToDateConverter = (UNIX_timestamp) => {
   var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
   return time;
 }
+
+let updateStatistics = (data, heading) => {
+  var origin = [Math.round(data['latitude']*100)/100, Math.round(data['longitude']*100)/100];
+  var destination = [Math.round(data['latitude']*100)/100, Math.round(data['longitude']*100)/100];
+  var altitude = Math.round(data['altitude']*100)/100;
+  var velocity = Math.round(data['velocity']*100)/100;
+  if (heading == "") {
+    heading = "-.-";
+  }
+
+  $("#issLocationLong").text("Longitude:   " + destination[1] + "° E");
+  $("#issLocationLat").text ("Latitude:    " + destination[0] + "° N");
+  $("#issAltitude").text    ("Altitude:    " + altitude + " km");
+  $("#issVelocity").text    ("Velocity:    " + velocity + " km/h");
+  $("#issLocationTimestamp").text("Timestamp: " + unixTimeToDateConverter(data['timestamp']));
+  $("#issHeading").text     ("Heading:     " + heading + "°");
+}
