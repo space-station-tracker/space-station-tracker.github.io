@@ -32,13 +32,15 @@ block bodycontent
       .col-sm-12.col-md-8.col-lg-9
         .card.mt-2.mb-3
           h5.card-header.text-center Image of the Day
-          img.card-img-top(src='/images/space_walk.jpg', alt='Card image cap')
+          img.card-img-top(src= IOTDurl, alt='Card image cap')
           .card-body
             h5.card-title= IOTDtitle
             p.card-text
               = IOTDdescription
             p.card-text
-              small.text-muted= IOTDlastupdate
+              small.text-muted= IOTDlastupdate 
+              small.text-muted  © 
+              small.text-muted= IOTDcopyright             
               
 block localjavascript
   script(type='text/javascript', src='/javascripts/main.js')
