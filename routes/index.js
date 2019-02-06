@@ -11,14 +11,15 @@ router.get('/', function(req, res) {
   // ae -> VEJXVarU5G9Wc3Q
 
   let IOTDtitle = "Space Walk";
-  let IOTDdescription = "Watch Juno zoom past Jupiter again.  NASA's robotic spacecraft Juno is continuing on its 53-day, highly-elongated orbits around our Solar System's largest planet.  The featured video is from perijove 16, the sixteenth time that Juno has passed near Jupiter since it arrived in mid-2016. Each perijove passes near a slightly different part of Jupiter's cloud tops.  This color-enhanced video has been digitally composed from 21 JunoCam still images, resulting in a 125-fold time-lapse. The video begins with Jupiter rising as Juno approaches from the north.";
-  let IOTDlastupdate = "Last updated 5 mins ago";
-  let IOTDurl = ""
+  let IOTDdescription = "NASA astronaut Drew Feustel seemingly hangs off the International Space Station while conducting a spacewalk with fellow NASA astronaut Ricky Arnold (out of frame) on March 29, 2018. Feustel, as are all spacewalkers, was safely tethered at all times to the space station during the six-hour, ten-minute spacewalk.";
+  let IOTDlastupdate = "2019-01-01";
+  let IOTDcopyright = "NASA.org";
+  let IOTDurl = "/images/space_walk.jpg";
 
   // fetch image of the day from NASA API
   axios.get('https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo')
   .then(response => {
-    console.log(response.data);
+    // console.log(response.data);
     IOTDtitle = response.data.title;
     IOTDdescription = response.data.explanation;
     IOTDlastupdate = response.data.date;
@@ -31,8 +32,12 @@ router.get('/', function(req, res) {
                           IOTDurl });
   })
   .catch(error => {
-    console.log(error);
-    res.render('index', { IOTDtitle, IOTDdescription, IOTDlastupdate});
+    // console.log(error);
+    res.render('index', { IOTDtitle,
+                          IOTDdescription,
+                          IOTDlastupdate,
+                          IOTDcopyright,
+                          IOTDurl });
   });
 });
 
