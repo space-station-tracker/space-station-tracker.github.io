@@ -137,20 +137,20 @@ $(document).ready( function() {
     }); // onload map
   }); // initial get request
 
-  // GET ASTRONAUT NAMES
-  $.getJSON('http://api.open-notify.org/astros.json', function(data) {
-    let number = data['number'];
-    console.log(number);
-    $('#crewCount').text("Astronauts (" + number + ")");
-
-    var astronauts = data['people'];
-    var cList = $('ul.astronaut-list');
-
-    $.each(astronauts, function(i) {
-      var li_a = $('<li/>').appendTo(cList);
-      var span = $('<span/>').addClass('test').text(astronauts[i]['name']).appendTo(li_a);
-    })
-  });
+  // GET ASTRONAUT NAMES - NEED TO USE HTTPS API
+  // $.getJSON('http://api.open-notify.org/astros.json', function(data) {
+  //   let number = data['number'];
+  //   console.log(number);
+  //   $('#crewCount').text("Astronauts (" + number + ")");
+  //
+  //   var astronauts = data['people'];
+  //   var cList = $('ul.astronaut-list');
+  //
+  //   $.each(astronauts, function(i) {
+  //     var li_a = $('<li/>').appendTo(cList);
+  //     var span = $('<span/>').addClass('test').text(astronauts[i]['name']).appendTo(li_a);
+  //   })
+  // });
 
   $('#spacer').css("height", ($(window).height()-$('#map').height()-$('#info').height()-$('#navbar').height() - $('#footer').height() - $('#textspacer').height()) );
 

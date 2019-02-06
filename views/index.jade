@@ -26,11 +26,14 @@ block bodycontent
           h5.card-header.text-center Astronauts
           .card-body
             ul.astronaut-list
+              li Oleg Kononenko
+              li David Saint-Jacques
+              li Anne McClain
       // DAILY ISS IMAGE
       .col-sm-12.col-md-8.col-lg-9
         .card.mt-2.mb-3
           h5.card-header.text-center Image of the Day
-          img.card-img-top(src= IOTDurl, alt='Card image cap')
+          img.card-img-top(src= IOTDurl, alt= IOTDtitle)
           .card-body
             h5.card-title= IOTDtitle
             p.card-text
@@ -46,7 +49,7 @@ block bodycontent
       //.col-sm-12.col-md-6.col-lg-6.col-xl-6
       .col-12
         .card.mb-3
-          img.card-img-top(src='/images/s135e011814.jpg', alt='Card image cap')
+          img.card-img-top(src='/images/s135e011814.jpg', alt='International Space Station')
           .card-body
             h5.card-title International Space Station
             p.card-text
@@ -56,7 +59,7 @@ block bodycontent
       //.col-sm-12.col-md-6.col-lg-6.col-xl-6
       .col-12
         .card.mb-3
-          img.card-img-top(src='/images/iss058e002813.jpg', alt='Card image cap')
+          img.card-img-top(src='/images/iss058e002813.jpg', alt='SpaceX Dragon released from the Canadarm2')
           .card-body
             h5.card-title SpaceX Dragon released from the Canadarm2
             p.card-text
@@ -66,17 +69,13 @@ block bodycontent
       //.col-sm-12.col-md-6.col-lg-6.col-xl-6
       .col-12
         .card.mb-3
-          img.card-img-top(src='/images/iss058e000081.jpg', alt='Card image cap')
+          img.card-img-top(src='/images/iss058e000081.jpg', alt='The SpaceX Dragon cargo craft and the Canadarm2 robotic arm')
           .card-body
             h5.card-title The SpaceX Dragon cargo craft and the Canadarm2 robotic arm
             p.card-text
               |  The SpaceX Dragon cargo craft and the Canadarm2 robotic arm are pictured attached to the International Space Station as the orbital complex was 251 miles above the Atlantic Ocean about to fly over Morocco.
             p.card-text
               small.text-muted 22 Dec 2018 © NASA
-            
-            
-            
-            
-                        
+  
 block localjavascript
   script(type='text/javascript', src='/javascripts/main.js')
