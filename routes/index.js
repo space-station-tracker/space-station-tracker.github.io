@@ -1,10 +1,9 @@
 var express = require('express');
-// const request = require('request-promise');
 const axios = require('axios');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   // MAPBOX credentials
   // mapbox
   // lx-proto
@@ -28,7 +27,7 @@ router.get('/', function(req, res) {
       IOTDcopyright = response.data.copyright;
       IOTDurl = response.data.url;
     }
-    res.render('index', { IOTDtitle,
+    res.render('isstracker', { IOTDtitle,
                           IOTDdescription,
                           IOTDlastupdate,
                           IOTDcopyright,
@@ -36,7 +35,7 @@ router.get('/', function(req, res) {
   })
   .catch(error => {
     // console.log(error);
-    res.render('index', { IOTDtitle,
+    res.render('isstracker', { IOTDtitle,
                           IOTDdescription,
                           IOTDlastupdate,
                           IOTDcopyright,
@@ -44,6 +43,12 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/photos', (req, res) => {
+  res.render('photos', {});
+});
 
+// router.get('/hubble-telescope', (req, res) => {
+//   res.render('hubble', {});
+// });
 
 module.exports = router;

@@ -1,12 +1,17 @@
-$(document).ready( function() {
-  // adjust header height
-  $('#map').css("height", $(window).height()*0.5);
-  // navigation bar move to respective page sections
-  $(".navbar a").click( function() {
-    $("body,html").animate({
-     scrollTop:$("#" + $(this).data('value')).offset().top-60},300)
-  });
-  $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function(data) {
+$(document).ready( () => {
+
+  $( '#topheader .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+  $( '#topheader .navbar-nav' ).find( 'li.nav-item.isstracker' ).addClass( 'active' );
+
+  // // adjust header height
+  // $('#map').css("height", $(window).height()*0.5);
+  // // navigation bar move to respective page sections
+  // $(".navbar a").click( function() {
+  //   $("body,html").animate({
+  //    scrollTop:$("#" + $(this).data('value')).offset().top-60},300)
+  // });
+
+  $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', (data) => {
     var origin = [Math.round(data['latitude']*100)/100, Math.round(data['longitude']*100)/100];
     var destination = [Math.round(data['latitude']*100)/100, Math.round(data['longitude']*100)/100];
     updateStatistics(data,"");
@@ -45,7 +50,7 @@ $(document).ready( function() {
               "line-width": 3
           }
       });
-      map.loadImage('images/iss-icon.png', function(error, image) {
+      map.loadImage('images/iss-icon.png', (error, image) => {
         if (error) throw error;
         map.addImage('iss-icon', image);
         map.addLayer({
@@ -72,7 +77,7 @@ $(document).ready( function() {
       });
       var cnt = 1;
 
-      $("#issLocationButton").click(function() {
+      $("#issLocationButton").click( ()=> {
         map.flyTo({center: [destination[1],destination[0]], zoom: 3});
       });
       map.flyTo({center: [destination[1],destination[0]], zoom: 3});
@@ -80,7 +85,7 @@ $(document).ready( function() {
       // Show ISS every 60 seconds
       setInterval( function() {
 
-        $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', function(data) {
+        $.getJSON('https://api.wheretheiss.at/v1/satellites/25544', (data) => {
           let lat = Math.round(data['latitude']*100)/100;
           let long = Math.round(data['longitude']*100)/100;
           let altitude = Math.round(data['altitude']*100)/100;
@@ -151,49 +156,5 @@ $(document).ready( function() {
   //     var span = $('<span/>').addClass('test').text(astronauts[i]['name']).appendTo(li_a);
   //   })
   // });
-  let cnt = 0;
-
-  // LOAD DATA WHEN SCROLLED TO BOTTOM
-  $(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-      // ajax call get data from server and append to the div
-      // console.log("scrolled to bottom");
-      console.log(cnt);
-      $.getJSON('https://images-api.nasa.gov/search?q=space%20station%20cargo&year_start=2018&year_end=2019&media_type=image', (data) => {
-        let info = data.collection.items[cnt];
-        //let len = info.length;
-        //let asd = [info[cnt+1],info[cnt+2],info[cnt+3]];
-        cnt++;
-        console.log(info.data);
-        let title = info.data[0].title;
-        let description = info.data[0].description;
-        let date = info.data[0].date_created.substr(0,10);
-        let copyright = "NASA";
-        if (info.data[0].photographer) {
-          copyright = info.data[0].photographer;
-        }
-        $.getJSON(info.href, (imagelinkdata) => {
-          console.log(imagelinkdata);
-
-          function insert(str, index, value) {
-              return str.substr(0, index) + value + str.substr(index);
-          }
-
-          let link = insert(imagelinkdata[2],4,"s");
-          console.log(link);
-          let cont = `<div class="col-6">
-                        <div class="card mb-3"><img class="card-img-top" src="` + link + `" alt="` + title + `" />
-                          <div class="card-body">
-                            <h5 class="card-title">` + title + `</h5>
-                            <p class="card-text">` + description + `</p>
-                            <p class="card-text"><small class="text-muted">` + date + ` © ` + copyright + `</small></p>
-                          </div>
-                        </div>
-                      </div>`
-          $(".nasa-images").append(cont);
-        });
-      });
-    }
-  });
 
 }); // DOCUMENT ONLOAD

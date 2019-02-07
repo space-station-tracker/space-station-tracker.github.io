@@ -1,0 +1,47 @@
+extends layout
+
+block bodycontent
+  // MAP OBJECT
+  #map.mapclass
+  
+  // STATISTICS, ASTRONAUTS, IMAGE OF THE DAY
+  .container
+    .row
+      // STATISTICS
+      .col-sm-12.col-md-4.col-lg-3
+        .card.mt-2.mb-3
+          h5.card-header.text-center Statistics
+          .card-body
+            ul.statistics-list
+              li#issLocationLat Latitude:
+              li#issLocationLong Longitude: 
+              li#issAltitude Altitude:
+              li#issVelocity Velocity: 
+              li#issHeading Heading: 
+              li#issLocationTimestamp Timestamp: 
+            a#issLocationButton.btn.btn-primary(href='#') Focus
+          .card-footer.text-center
+            small.text-muted Updated every 60 seconds
+        .card.mt-3.mb-3
+          h5.card-header.text-center Astronauts
+          .card-body
+            ul.astronaut-list
+              li Oleg Kononenko
+              li David Saint-Jacques
+              li Anne McClain
+      // DAILY ISS IMAGE
+      .col-sm-12.col-md-8.col-lg-9
+        .card.mt-2.mb-3
+          h5.card-header.text-center Image of the Day
+          img.card-img-top(src= IOTDurl, alt= IOTDtitle)
+          .card-body
+            h5.card-title= IOTDtitle
+            p.card-text
+              = IOTDdescription
+            p.card-text
+              small.text-muted= IOTDlastupdate 
+              small.text-muted  © 
+              small.text-muted= IOTDcopyright
+  
+block localjavascript
+  script(type='text/javascript', src='/javascripts/isstracker.js')

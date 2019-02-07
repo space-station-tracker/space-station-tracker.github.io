@@ -1,6 +1,26 @@
 extends layout
 
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+block bodycontent
+  //- .container-fluid
+
+    //- img.img-fluid(src="/images/136149_iss-space-shuttle-nasa-station-endeavour_6048x4032_h.jpg" alt="a")
+    
+  .card.text-white
+    img.card-img.rounded-0.border-0(src='/images/iss058e002813.jpg', alt='404 The page you are looking for does not exist...')
+    .card-img-overlay.text-center
+      h3.card-title= error.status
+      h5.card-text
+        | The page you are looking for does not exist...
+      p.card-text.text-muted
+        a(href="/") Back Home
+
+  .container.text-center
+    //- h2= error.status
+    //- p The page you are looking for does not exist... 
+    //- h2= message
+    
+    
+    //- pre #{error.stack}
+    
+    
+    

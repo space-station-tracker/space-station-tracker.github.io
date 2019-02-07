@@ -1,0 +1,48 @@
+extends layout
+
+block localcss
+  link(rel='stylesheet', type='text/css', href='/stylesheets/photos.css')
+
+block bodycontent
+
+  // MAIN IMAGE 
+  .container-fluid
+    .parallax-window(data-parallax='scroll', data-position='left', data-speed="0.3", data-image-src='/images/136149_iss-space-shuttle-nasa-station-endeavour_6048x4032_h.jpg', alt='space-shuttle-endeavour_6048x4032_h')
+    //- img.img-fluid(src='/images/136149_iss-space-shuttle-nasa-station-endeavour_6048x4032_h.jpg', alt='136149_iss-space-shuttle-nasa-station-endeavour_6048x4032_h')
+
+  
+  // ISS IMAGES FROM NASA.GOV 
+  .container
+    .row.nasa-images
+      .col-sm-12.col-md-6.col-lg-6.col-xl-6
+        .card.mb-3
+          img.card-img-top(src='/images/s135e011814.jpg', alt='International Space Station')
+          .card-body
+            h5.card-title International Space Station
+            p.card-text
+              //- | This picture of the International Space Station was photographed from the space shuttle Atlantis as the orbiting complex and the shuttle performed their relative separation in the early hours of July 19, 2011. Onboard the station were Russian cosmonauts Andrey Borisenko, Expedition 28 commander; Sergei Volkov and Alexander Samokutyaev, both flight engineers; Japan Aerospace Exploration astronaut Satoshi Furukawa, and NASA astronauts Mike Fossum and Ron Garan, all flight engineers. Onboard the shuttle were NASA astronauts Chris Ferguson, STS-135 commander; Doug Hurley, pilot; and Sandy Magnus and Rex Walheim, both mission specialists.
+            p.card-text
+              small.text-muted 19 Jul 2011 © NASA
+      .col-sm-12.col-md-6.col-lg-6.col-xl-6
+        .card.mb-3
+          img.card-img-top(src='/images/iss058e002813.jpg', alt='SpaceX Dragon released from the Canadarm2')
+          .card-body
+            h5.card-title SpaceX Dragon released from the Canadarm2
+            p.card-text
+              //- | The SpaceX Dragon cargo craft begins its departure from the International Space Station moments after being released from the grips of the Canadarm2 robotic arm. Featured prominently in the lower foreground is one of two cymbal-shaped UltraFlex solar arrays attached to the Northrop Grumman Cygnus resupply ship. The orbital complex was orbiting 255 miles above Australia's Northern Territory at the time this photograph was taken.
+            p.card-text
+              small.text-muted 13 Jan 2019 © NASA
+      .col-sm-12.col-md-6.col-lg-6.col-xl-6
+        .card.mb-3
+          img.card-img-top(src='/images/iss058e000081.jpg', alt='The SpaceX Dragon cargo craft and the Canadarm2 robotic arm')
+          .card-body
+            h5.card-title The SpaceX Dragon cargo craft and the Canadarm2 robotic arm
+            p.card-text
+              |  The SpaceX Dragon cargo craft and the Canadarm2 robotic arm are pictured attached to the International Space Station as the orbital complex was 251 miles above the Atlantic Ocean about to fly over Morocco.
+            p.card-text
+              small.text-muted 22 Dec 2018 © NASA
+  
+block localjavascript
+  script(type='text/javascript', src='/javascripts/photos.js')
+  script(src='/javascripts/parallax.min.js')
+  //- script(src='https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js')

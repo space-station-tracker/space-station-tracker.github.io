@@ -1,0 +1,13 @@
+/* .coverphoto {
+  padding: 0px;
+  margin: 0px;
+} */
+
+.parallax-mirror {
+    z-index:1;
+}
+
+.parallax-window {
+    min-height: 500px;
+    background: transparent;
+}

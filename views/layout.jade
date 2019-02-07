@@ -27,35 +27,38 @@ html(lang='en')
     // Mapbox
     script(src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js')
     link(href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css', rel='stylesheet')
-    // Stylesheets 
+    // Local Stylesheets
+    block localcss
+    // Global Stylesheets 
     link(rel='stylesheet', type='text/css', href='/stylesheets/styles.css')
     link(rel='icon', href='/images/iss-icon-black.png', type='image/x-icon')
   
   body
     // NAVBAR
-    nav#navbar.navbar.navbar-expand-sm.navbar-light.bg-light
-      .container
-        a.navbar-brand(href='#')
-          img(src='/images/iss-icon-black.png', width='20', height='20', alt='ISS Tracker')
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse
-          ul.navbar-nav.mr-auto
-            li.nav-item.active
-              a.nav-link(href='#') ISS Tracker
-            li.nav-item
-              a.nav-link(href='#') Astronauts
-            li.nav-item
-              a.nav-link(href='#') Statistics
-          ul.navbar-nav.ml-auto
-            li.nav-item
-              a.nav-link(href='https://lx-proto.tk') Author
-            li.nav-item
-              a.nav-link(href='https://github.com/alexberndt')
-                i.fa.fa-github
-            li.nav-item
-              a.nav-link(href='https://www.linkedin.com/in/alexander-berndt/')
-                i.fa.fa-linkedin
+    div#topheader
+      nav#navbar.navbar.navbar-expand-sm.navbar-light.bg-light
+        .container
+          a.navbar-brand(href='/')
+            img(src='/images/iss-icon-black.png', width='20', height='20', alt='ISS Tracker')
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+              li.nav-item.isstracker.active
+                a.nav-link(href='/') ISS Tracker
+              li.nav-item.photos
+                a.nav-link(href='/photos') Photos 
+              //- li.nav-item.hubble
+              //-   a.nav-link(href='/hubble-telescope') Hubble Telescope
+            ul.navbar-nav.ml-auto
+              li.nav-item
+                a.nav-link(href='https://lx-proto.tk') Author
+              li.nav-item
+                a.nav-link(href='https://github.com/alexberndt')
+                  i.fa.fa-github
+              li.nav-item
+                a.nav-link(href='https://www.linkedin.com/in/alexander-berndt/')
+                  i.fa.fa-linkedin
     
     // MAIN BODY CONTENT           
     block bodycontent
