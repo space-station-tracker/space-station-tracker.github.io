@@ -1,7 +1,20 @@
-/* .coverphoto {
-  padding: 0px;
-  margin: 0px;
-} */
+/* PARALLAX COVER PHOTO */
+
+#parallaxtitle {
+  position: absolute;
+  z-index: 2;
+  top: 200px;
+  left: 50%;
+  color: #bbb;
+}
+
+#parallaxsubtitle {
+  position: absolute;
+  z-index: 2;
+  top: 250px;
+  left: 50%;
+  color: #eee;
+}
 
 .parallax-mirror {
     z-index:1;
@@ -11,3 +24,5 @@
     min-height: 500px;
     background: transparent;
 }
+
+/* OTHER */

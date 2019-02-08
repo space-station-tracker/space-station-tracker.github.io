@@ -1,11 +1,13 @@
 doctype html
-html(lang='en')
+html(lang='en', prefix="og: http://ogp.me/ns#")
   head
     // Meta info
     title ISS Tracker
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     meta(name='theme-color', content='#FFF')
+    
+    block opengraph
     
     // Global site tag (gtag.js) - Google Analytics
     script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-133321501-2')
