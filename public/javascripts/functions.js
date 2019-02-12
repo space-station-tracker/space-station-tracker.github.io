@@ -5,12 +5,23 @@
 let unixTimeToDateConverter = (UNIX_timestamp) => {
   var a = new Date(UNIX_timestamp*1000);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
+  var year = '' + a.getFullYear(); // ''+ converts to string
+  var month = '' + months[a.getMonth()];
+  var date = '' + a.getDate();
+  var hour = '' + a.getHours();
+  var min = '' + a.getMinutes();
+  var sec = '' + a.getSeconds();
+
+  if (hour.length < 2) {
+    hour = '0' + hour;
+  }
+  if (min.length < 2) {
+    min = '0' + min;
+  }
+  if (sec.length < 2) {
+    sec = '0' + sec;
+  }
+
   var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
   return time;
 }
@@ -27,9 +38,19 @@ let updateStatistics = (data, heading) => {
   if (heading == "") {
     heading = "-.-";
   }
+  if (destination[1] > 0) {
+    $("#issLocationLong").text("Longitude:   " + destination[1] + "° E");
+  } else {
+    let long = -destination[1];
+    $("#issLocationLong").text("Longitude:   " + long + "° W");
+  }
 
-  $("#issLocationLong").text("Longitude:   " + destination[1] + "° E");
-  $("#issLocationLat").text ("Latitude:    " + destination[0] + "° N");
+  if (destination[0] > 0) {
+    $("#issLocationLat").text ("Latitude:    " + destination[0] + "° N");
+  } else {
+    let lat = -destination[0];
+    $("#issLocationLat").text ("Latitude:    " + lat + "° S");
+  }
   $("#issAltitude").text    ("Altitude:    " + altitude + " km");
   $("#issVelocity").text    ("Velocity:    " + velocity + " km/h");
   $("#issLocationTimestamp").text("Timestamp: " + unixTimeToDateConverter(data['timestamp']));

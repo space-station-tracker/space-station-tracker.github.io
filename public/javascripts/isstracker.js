@@ -71,7 +71,7 @@ $(document).ready( () => {
             },
             "layout": {
                 "icon-image": "iss-icon",
-                "icon-size": 0.2
+                "icon-size": 0.25
             }
         });
       });
@@ -97,36 +97,36 @@ $(document).ready( () => {
 
           updateStatistics(data,heading);
 
-          lineName = "route" + cnt;
-          // must hve same sign, otherwise a long horizontal is drawn on the map
-          if (origin[1]*destination[1] > 0) {
-            map.addLayer({
-                "id": lineName,
-                "type": "line",
-                "source": {
-                    "type": "geojson",
-                    "data": {
-                        "type": "Feature",
-                        "properties": {},
-                        "geometry": {
-                            "type": "LineString",
-                            "coordinates": [
-                                [origin[1], origin[0]],
-                                [destination[1], destination[0]],
-                            ]
-                        }
-                    }
-                },
-                "layout": {
-                    "line-join": "round",
-                    "line-cap": "round"
-                },
-                "paint": {
-                    "line-color": "#FF0000",
-                    "line-width": 3
-                }
-            });
-          }
+          // lineName = "route" + cnt;
+          // // must hve same sign, otherwise a long horizontal is drawn on the map
+          // if ((cnt%30 == 0) && origin[1]*destination[1] > 0) {
+          //   map.addLayer({
+          //       "id": lineName,
+          //       "type": "line",
+          //       "source": {
+          //           "type": "geojson",
+          //           "data": {
+          //               "type": "Feature",
+          //               "properties": {},
+          //               "geometry": {
+          //                   "type": "LineString",
+          //                   "coordinates": [
+          //                       [origin[1], origin[0]],
+          //                       [destination[1], destination[0]],
+          //                   ]
+          //               }
+          //           }
+          //       },
+          //       "layout": {
+          //           "line-join": "round",
+          //           "line-cap": "round"
+          //       },
+          //       "paint": {
+          //           "line-color": "#FF0000",
+          //           "line-width": 3
+          //       }
+          //   });
+          // }
 
 
           cnt++;
@@ -138,7 +138,7 @@ $(document).ready( () => {
 
           origin = destination;
         }); // end GET ISS location
-      }, 60000);// end set interval
+      }, 2000);// end set interval
     }); // onload map
   }); // initial get request
 
